@@ -1,0 +1,45 @@
+.container {
+    background-image: url('src/assets/forest.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
+
+.start {
+    background-color: aliceblue;
+    border: 40px solid;
+    border-image-source: url(https://mdn.github.io/css-examples/tools/border-image-generator/border-image-4.png);
+    border-image-slice: 20;
+    padding: 30px;
+}
+
+.start p {
+    font-weight: 800;
+}
+
+.start ul {
+    font-weight: 800;
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.start li {
+    cursor: pointer;
+}
+
+.start-btns {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    cursor: pointer;
+}
+
+.start-btns a {
+
+}

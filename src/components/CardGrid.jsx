@@ -4,6 +4,7 @@ import Tilt from "react-parallax-tilt";
 import uniqid from "uniqid"
 import LostScreen from "./LostScreen";
 import Score from "./Score";
+import './style/cards.css'
 
 function CardGrid({ num }) {
     const { pokemons, getRandomPokemons, setPokemons } = usePokemons();
@@ -39,11 +40,13 @@ function CardGrid({ num }) {
         console.log('claflsa')
     }
     return (
-        <div>
-            {lost && <LostScreen startOver={startOver}/>}
-                <Score num={visited.length} high={highScore}/>
+        <div className="displayContainer">
+            <Score num={visited.length} high={highScore}/>
+            <div className="cardsContainer">
+                {lost && <LostScreen startOver={startOver}/>}
                 {!lost && pokemons.map((pokemon) => (
                     <Tilt
+                        className="card"
                         key={uniqid()}
                         tiltReverse
                         reset
@@ -57,8 +60,10 @@ function CardGrid({ num }) {
                             alt={pokemon.name}
                             onClick={() => handleClick(pokemon.id)}
                         />
+                        <p>{pokemon.name}</p>
                     </Tilt>
                 ))}
+            </div>
         </div>
     );
 }

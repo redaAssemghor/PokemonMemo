@@ -1,6 +1,7 @@
 import { useState } from "react"
 import CardGrid from "./components/CardGrid"
 import StartScreen from "./components/StartScreen"
+import './components/style/app.css'
 
 function App() {
   const [mode, setMode] = useState(null)
@@ -10,11 +11,9 @@ function App() {
   }
 
   return (
-    <>
-      {
-        mode === null ? <StartScreen getMode={handleSelectedMode} />  : <CardGrid num={mode} />
-      }
-    </>
+    <div className="app">
+      {mode === null ? <StartScreen getMode={handleSelectedMode} />  : <CardGrid num={mode} />}
+    </div>
   )
 }
 
