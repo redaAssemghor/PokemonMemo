@@ -2,27 +2,74 @@ import { useState } from "react";
 import './style/startScreen.css'
 
 function StartScreen({getMode}) {
+    const [easy, setEasy] = useState(false);
+    const [hard, setHard] = useState(false);
+    const [medium, setMedium] = useState(false);
+
     const handleClickEasy = () => {
-        getMode(5)
-    }
-    const handleClickHard = () => {
-        getMode(10)
+        setEasy(true)
+        setMedium(false)
+        setHard(false)
     }
     const handleClickMedium = () => {
-        getMode(8)
+        setMedium(true)
+        setEasy(false)
+        setHard(false)
+    }
+    const handleClickHard = () => {
+        setHard(true)
+        setEasy(false)
+        setMedium(false)
+    }
+
+    const handelChoise = (e) => {
+        e.preventDefault()
+        if (easy) {
+            getMode(4)
+        }
+        else if(medium) {
+            getMode(8)
+        }
+        else if (hard) {
+            getMode(12)
+        }
     }
 
     return ( 
         <div className="container">
+            <div className="bg-img"></div>
             <div className="start">
-                <p>lats play a game!</p>
-                <ul>
-                    <li onClick={handleClickEasy}>Easy</li>
-                    <li onClick={handleClickMedium}>Medium</li>
-                    <li onClick={handleClickHard}>Hard</li>
-                </ul>
-                <div className="start-btns">
-                    <a onClick={handleClickEasy}>START GAME</a>
+                <div className="">
+                    <p>What would you like to do?</p>
+                    <form onSubmit={handelChoise}>
+                        <label>
+                            <input
+                                type="radio"
+                                name="answer"
+                                onChange={() => handleClickEasy()}
+                            />
+                            <span>Easy</span>
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="answer"
+                                onChange={() => handleClickMedium()}
+                            />
+                            <span>Medium</span>
+                        </label>
+
+                        <label>
+                            <input
+                                type="radio"
+                                name="answer"
+                                onChange={() => handleClickHard()}
+                            />
+                            <span>Hard</span>
+                        </label>
+                        <button>START GAME</button>
+                    </form>
                     <a href="">GITHUB REPO</a>
                 </div>
             </div>

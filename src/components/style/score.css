@@ -1,0 +1,32 @@
+.score-container {
+    
+}
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.score-count {
+    font-size: larger;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    height: fit-content;
+}
+.poke {
+    color: red;
+}
+.memo {
+    color: white;
+}
+span {
+    margin-left: 10px;
+}
+.high-score {
+    margin-left: 20px;
+}
