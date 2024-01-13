@@ -3,4 +3,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Reggae One', system-ui;
+  background-image: url('src/assets/pokemon-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }

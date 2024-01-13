@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function usePokemons() {
   const [pokemons, setPokemons] = useState([]);
-  const POSSIBLE_POKEMONS = 721; // Up to gen 6
+  const POSSIBLE_POKEMONS = 15; // Up to gen 6
 
   const getPokemon = async ({ id }) => {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -21,9 +21,8 @@ export default function usePokemons() {
             pokemonsToShow.push({ id: randomId });
         }
     }
-
     return await Promise.all(pokemonsToShow.map(getPokemon));
-};
+  };
 
   return { pokemons, getRandomPokemons, setPokemons };
 }

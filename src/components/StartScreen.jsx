@@ -1,80 +1,56 @@
-import { useState } from "react";
-import './style/startScreen.css'
+import React, { useState } from "react";
+import './style/startScreen.css';
 
-function StartScreen({getMode}) {
-    const [easy, setEasy] = useState(false);
-    const [hard, setHard] = useState(false);
-    const [medium, setMedium] = useState(false);
+function StartScreen({ getMode }) {
+    const [difficulty, setDifficulty] = useState(null);
 
-    const handleClickEasy = () => {
-        setEasy(true)
-        setMedium(false)
-        setHard(false)
-    }
-    const handleClickMedium = () => {
-        setMedium(true)
-        setEasy(false)
-        setHard(false)
-    }
-    const handleClickHard = () => {
-        setHard(true)
-        setEasy(false)
-        setMedium(false)
+    const handleDifficultyChange = (value) => {
+        setDifficulty(value);
     }
 
-    const handelChoise = (e) => {
-        e.preventDefault()
-        if (easy) {
-            getMode(4)
-        }
-        else if(medium) {
-            getMode(8)
-        }
-        else if (hard) {
-            getMode(12)
+    const handleChoice = (e) => {
+        e.preventDefault();
+
+        if (difficulty !== null) {
+            // Map difficulty level to the corresponding mode value
+            const mode = {
+                easy: 4,
+                medium: 8,
+                hard: 12
+            }[difficulty];
+
+            getMode(mode);
         }
     }
 
-    return ( 
+    return (
         <div className="container">
-            <div className="bg-img"></div>
             <div className="start">
                 <div className="">
-                    <p>What would you like to do?</p>
-                    <form onSubmit={handelChoise}>
-                        <label>
-                            <input
-                                type="radio"
-                                name="answer"
-                                onChange={() => handleClickEasy()}
-                            />
-                            <span>Easy</span>
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="answer"
-                                onChange={() => handleClickMedium()}
-                            />
-                            <span>Medium</span>
-                        </label>
-
-                        <label>
-                            <input
-                                type="radio"
-                                name="answer"
-                                onChange={() => handleClickHard()}
-                            />
-                            <span>Hard</span>
-                        </label>
+                    <p className="typing">What would you like to do?</p>
+                    <form className="form" onSubmit={handleChoice}>
+                        {['easy', 'medium', 'hard'].map((level) => (
+                            <label key={level}>
+                                <input
+                                    type="radio"
+                                    name="difficulty"
+                                    value={level}
+                                    checked={difficulty === level}
+                                    onChange={() => handleDifficultyChange(level)}
+                                />
+                                <div className="spans">
+                                    <span className="custom-radio"></span>
+                                    <span>{level.charAt(0).toUpperCase() + level.slice(1)}</span>
+                                </div>
+                            </label>
+                        ))}
                         <button>START GAME</button>
                     </form>
-                    <a href="">GITHUB REPO</a>
+                    <a href="https://github.com/redaAssemghor/PokemonMemo" target="-blank" rel="noopener noreferrer">GITHUB REPO</a>
                 </div>
             </div>
         </div>
-     );
+    );
 }
 
 export default StartScreen;

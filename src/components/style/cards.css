@@ -1,11 +1,9 @@
 .displayContainer {
-    height: 100vh;
-    background-image: url('src/assets/pokemon-bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-
 .display12 {
   display: grid;
   grid-template-columns: repeat(6, 200px);
@@ -27,6 +25,11 @@
 }
 
 .card {
+    transition: transform 0.3s ease-in-out;
+    animation: flip-front 0.3s linear forwards;
+  }
+
+  .tilt {
     background-color: #56474735;
     border-radius: 20px;
     display: flex;
@@ -34,13 +37,11 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    width: 150px;
-    height: 200px;
+    width: 180px;
+    height: 250px;
     overflow: hidden;
     margin: 10px;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    animation: flip-front 0.3s linear forwards;
   }
   
   .card img {
@@ -49,15 +50,20 @@
   }
 
   .card p {
+    color: antiquewhite;
     font-size: larger;
     font-weight: 900;
+  }
+
+  .round {
+    align-self: center;
   }
 
   .loadincard {
     background-image: url(src/assets/card-back.png);
     background-size: cover;
-    width: 150px;
-    height: 205px;
+    width: 180px;
+    height: 250px;
     overflow: hidden;
     margin: 10px;
     animation: flip-back 0.3s linear forwards;

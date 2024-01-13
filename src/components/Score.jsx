@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import './style/score.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrophy } from '@fortawesome/free-solid-svg-icons'
+import usePokemons from "../usePokemon";
 
-function Score({num, high}) {
+function Score({clicked, high}) {
     const [score, setScore] = useState(null)
 
     useEffect(() => {
-        setScore(num)
-    },[num])
+        setScore(clicked)
+    },[clicked])
 
     return (
         <div className="score-container">
@@ -23,7 +24,7 @@ function Score({num, high}) {
             </div>
             <div className="score-count">
                 <p>
-                    Score: 
+                    Score:
                     <span>{score}</span>
                 </p>
 
